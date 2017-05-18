@@ -16,9 +16,6 @@ var clientId = 'test-app';
 var clientSecret = 'f735c587f01b4c5a82048418caf5c97f'; 
 var savedFile = null;
 
-var StockName = "";
-var ShareQuantity = "";
-
 function getAccessToken(clientId, clientSecret, callback) {
   request.post({
     url: 'https://oxford-speech.cloudapp.net/token/issueToken',
