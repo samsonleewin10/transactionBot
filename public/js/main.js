@@ -119,6 +119,7 @@
                     var audio = new Audio('../audios/female_eng_TranSucceed.mp3');
                     audio.play();   
                 }
+                //NOT MICROSOFT STOCK
                 else{
                     // CONFIGURE THE TEXT REPLY FROM BOT
                     buildString += "We don't have such stock at our database at the moment. Please try again later.";
