@@ -75,12 +75,11 @@ function speechToText(filename, accessToken, callback) {
 
 function LUIS(query, callback) {
     request.get({
-      //url: 'https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/',
       url: 'https://api.projectoxford.ai/luis/v1/application',
       qs: {
-        //'id': '89b8b86b-767b-4451-99eb-7d8851010144', // API key from Cognitive Service LUIS service
+        // AppID from Cognitive Service LUIS service
         'id': '37e783dc-adea-454d-8810-97e45db12525',
-        //'subscription-key': '961eba520bcf4ace88ddd4c9aa873cb3', // LUIS Subscription ID
+        // LUIS Subscription ID
         'subscription-key': '2073be3f599d4b899783fc5d6850f92f',
         'q': query
       }
@@ -117,7 +116,7 @@ app.post('/recognize', function(req, res) {
           console.log('Got access token: ' + accessToken)
           speechToText(savedFile, accessToken, function(err, speechres) {
               if(err) return console.log(err);
-              result = '你想... "' + speechres.results[0].lexical + '"? Confidence score: ' + speechres.results[0].confidence + '.';
+              result = 'You mean... "' + speechres.results[0].lexical + '"? Confidence score: ' + speechres.results[0].confidence + '.';
               console.log(result);
               res.status(200).send(speechres.results[0].lexical);
               
