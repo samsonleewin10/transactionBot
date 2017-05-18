@@ -72,7 +72,7 @@
                 buildString += "Which stocks would you like to purchase?";
             
                 // IMAGE TO BE SHOWN FOR THIS REPLY
-                document.getElementById("botWindow").src="../images/restaurant001.png";
+                document.getElementById("botWindow").src="../images/botAsk.png";
             
                 // PLAY DEFAULT AUDIO BY THE BOT
                 var audio = new Audio('../audios/female_eng_WhichStock.mp3');
@@ -84,7 +84,7 @@
                     buildString += "Which stocks would you like to purchase?";
             
                     // IMAGE TO BE SHOWN FOR THIS REPLY
-                    document.getElementById("botWindow").src="../images/restaurant001.png";
+                    document.getElementById("botWindow").src="../images/botAsk.png";
             
                     // PLAY DEFAULT AUDIO BY THE BOT
                     var audio = new Audio('../audios/female_eng_WhichStock.mp3');
@@ -93,9 +93,14 @@
                 else{
                     // CONFIGURE THE TEXT REPLY FROM BOT
                     buildString += "How many shares would you like to purchase?";
-            
-                    // IMAGE TO BE SHOWN FOR THIS REPLY
-                    document.getElementById("botWindow").src="../images/restaurant001.png";
+                    
+                    if( StockName == "microsoft"){
+                        document.getElementById("botWindow").src="../images/.msStock.png";
+                    }else{
+                        // IMAGE TO BE SHOWN FOR THIS REPLY
+                        document.getElementById("botWindow").src="../images/botAsk.png";
+                    }
+
             
                     // PLAY DEFAULT AUDIO BY THE BOT
                     var audio = new Audio('../audios/female_eng_HowManyShares.mp3');
@@ -108,7 +113,7 @@
                     buildString += ShareQuantity + " shares of Microsoft's stocks have been purchased. It is my pleasure to serve you here. Anything else I can help?";
             
                     // IMAGE TO BE SHOWN FOR THIS REPLY
-                    document.getElementById("botWindow").src="../images/restaurant001.png";
+                    document.getElementById("botWindow").src="../images/tranSucc.png";
             
                     // PLAY DEFAULT AUDIO BY THE BOT
                     var audio = new Audio('../audios/female_eng_TranSucceed.mp3');
