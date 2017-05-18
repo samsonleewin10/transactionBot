@@ -72,7 +72,7 @@
                 buildString += "Which stocks would you like to purchase?";
             
                 // IMAGE TO BE SHOWN FOR THIS REPLY
-                document.getElementById("botWindow").src="../images/botAsk.png";
+                document.getElementById("botWindow").src="../images/robotAsk.png";
             
                 // PLAY DEFAULT AUDIO BY THE BOT
                 var audio = new Audio('../audios/female_eng_WhichStock.mp3');
@@ -84,7 +84,7 @@
                     buildString += "Which stocks would you like to purchase?";
             
                     // IMAGE TO BE SHOWN FOR THIS REPLY
-                    document.getElementById("botWindow").src="../images/botAsk.png";
+                    document.getElementById("botWindow").src="../images/robotAsk.png";
             
                     // PLAY DEFAULT AUDIO BY THE BOT
                     var audio = new Audio('../audios/female_eng_WhichStock.mp3');
@@ -98,7 +98,7 @@
                         document.getElementById("botWindow").src="../images/msStock.png";
                     }else{
                         // IMAGE TO BE SHOWN FOR THIS REPLY
-                        document.getElementById("botWindow").src="../images/botAsk.png";
+                        document.getElementById("botWindow").src="../images/robotAsk.png";
                     }
 
             
