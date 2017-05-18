@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Speech to Text Demo</title>
+
+    <script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/FileSaver.min.js"></script>
+
+	<script src="js/recorderjs/recorder.js"></script>
+	<script src="js/main.js"></script>
+
+  <script language="javascript" type="text/javascript" src="js/p5libs/p5.js"></script>
+  <script language="javascript" type="text/javascript" src="js/p5libs/p5.dom.js"></script>
+  <script language="javascript" type="text/javascript" src="js/p5/cellgrid.js"></script>
+	
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+</head>
+<body style="background: #003153">
+
+    <div class="container">
+        <div class="jumbotron text-center" style="background: #f0f8ff; margin-top: 20px">
+
+            <div class="row" style="display: table-row; height: 100%">
+
+                <div class="col-xs-6 text-center" style="display: table-cell; float: none; vertical-align: middle">
+
+                    <button id="btnRecord" 
+                            class=" btn_mic 
+                                    btn 
+                                    btn-danger 
+                                    btn-large 
+                                    btnup"
+                            type="button"
+                            onmousedown="btnRecordDown(this)"
+                            onmouseup="btnRecordUp(this)"
+                            onmouseout="btnRecordOut(this)">
+                    </button>
+                    <div class="form-group" style="margin-top:30px;font-weight:400">
+                    	按住上方按鈕錄音，放開後傳送錄音
+                    </div>
+                    <div class="form-group" style="margin-top:30px">
+                        <label for="txtPhrase">
+                            <span id="spinPhrase" style="visibility: hidden" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+                            您:</label>
+                        <input type="text" class="form-control" id="txtPhrase" readonly="readonly">
+                    </div>
+                    <div class="form-group">
+                        <span id="spinIntent" style="visibility: hidden" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+                        <label for="txtIntent">機器人嘅回應:</label>
+                        <textarea class="form-control" rows="4" id="txtIntent" readonly="readonly"></textarea>                    </div>
+                </div>
+                <div class="col-xs-6" style="display: block; float: none; width: 100%; padding-left: 50px; padding-right: 50px; vertical-align: middle">
+                    <!--<div id="primer" style="width: 400px; display: block; margin: auto; height:400px; overflow: hidden">
+                    </div>-->
+                    <div style="width: 400px; display: block; margin: auto; height:400px; overflow: hidden">
+                        <img id="botWindow" src="../images/robot.png" height="400px"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</body>
+</html>
