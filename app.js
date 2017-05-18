@@ -14,8 +14,10 @@ var fs = require('fs'),
 
 var clientId = 'test-app';   
 var clientSecret = 'f735c587f01b4c5a82048418caf5c97f'; 
-//'ceb21dbbce474431ad3fc95b12a6cc90'; // API key from Bing Speech service
 var savedFile = null;
+
+var StockName = "";
+var ShareQuantity = "";
 
 function getAccessToken(clientId, clientSecret, callback) {
   request.post({
@@ -45,12 +47,11 @@ function speechToText(filename, accessToken, callback) {
   fs.readFile(filename, function(err, waveData) {
     if(err) return callback(err);
     request.post({
-      url: 'https://speech.platform.bing.com/recognize', //'https://653b18d0e1f24f1397a20586e2654959.api.cris.ai/cris/speech/query?cid=a1787a15-7150-4ee4-b277-f51ddb98be87',
+      url: 'https://speech.platform.bing.com/recognize',
       qs: {
         'scenarios': 'ulm',
         'appid': 'D4D52672-91D7-4C74-8AD8-42B1D98141A5',
-        //'31b3d95b-af74-4550-9619-de76fe33f0f0',// Using Custom Speech service
-        'locale': 'zh-HK',
+        'locale': 'en-US',
         'device.os': 'wp7',
         'version': '3.0',
         'format': 'json',
@@ -77,11 +78,13 @@ function speechToText(filename, accessToken, callback) {
 
 function LUIS(query, callback) {
     request.get({
-      //url: 'https://westus.api.cognitive.microsoft.com/luis/v2.0/application/',
+      //url: 'https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/',
       url: 'https://api.projectoxford.ai/luis/v1/application',
       qs: {
-        'id': '89b8b86b-767b-4451-99eb-7d8851010144', // API key from Cognitive Service LUIS service
-        'subscription-key': '961eba520bcf4ace88ddd4c9aa873cb3', // LUIS Subscription ID
+        //'id': '89b8b86b-767b-4451-99eb-7d8851010144', // API key from Cognitive Service LUIS service
+        'id': '37e783dc-adea-454d-8810-97e45db12525',
+        //'subscription-key': '961eba520bcf4ace88ddd4c9aa873cb3', // LUIS Subscription ID
+        'subscription-key': '2073be3f599d4b899783fc5d6850f92f',
         'q': query
       }
     }, function(err, resp, body) {

@@ -47,106 +47,94 @@
     {
         var resp = JSON.parse(jsonresponse);
 
-        var buildString = "我可以...";
+        var buildString = "Understood...";
 
         var entities = resp["entities"];
-
-        // PROCESS THE JSON FOR INTENT AND ENTITIES
-        if ( resp["intents"][0]["intent"] == "findFood") {
-            // WE WANT TO ADD A CELL, SO LOOK FOR POSITION AND COLOR
-
-            buildString += "幫你搵餐廳! 即刻介紹一間比你!";
-            
-            // var addColor = "";
-            // var addPosition = "";
-
-            // for ( var i = 0; i < entities.length; i++ ) {
-            //     if ( entities[i]["type"] == "CellColor") {
-            //         addColor = entities[i]["entity"];
-            //         buildString += " [ Color: " + entities[i]["entity"] + "] ";
-            //     }
-            //     if ( entities[i]["type"] == "builtin.number") {
-            //         addPosition = entities[i]["entity"];
-            //         buildString += " [ Position: " + entities[i]["entity"] + "] ";
-            //     }
-            // }
-
-            // if ( addColor != "" && addPosition != "") {
-            //     addCell(addPosition, addColor);
-            // }
-
-            document.getElementById("botWindow").src="../images/restaurant001.png";
-            var audio = new Audio('../audios/sampleCanto_Male.wav');
-            audio.play();
-        }
         
-        if (resp["intents"][0]["intent"] == "findFun" )
-        {
-            buildString += "介紹呢個商場嘅好去處，包你玩得開心!";
+        // PROCESS THE JSON FOR INTENT AND ENTITIES
+        if ( resp["intents"][0]["intent"] == "PurchaseStocks") {
+            
 
-            // var movePos = "";
-            // var moveDirection = "";
+            var StockName = "";
+            var ShareQuantity = "";
 
-            // for ( var i = 0; i < entities.length; i++ ) {
-            //     if ( entities[i]["type"] == "builtin.number" || (entities[i]["type"] == "position") ) {
-            //         buildString += " [ Position: " + entities[i]["entity"] + "] ";
-            //         movePos = entities[i]["entity"];
-            //     }
-            //     if ( entities[i]["type"] == "direction") {
-            //         buildString += " [ Direction: " + entities[i]["entity"] + "] ";
-            //         moveDirection = entities[i]["entity"];
-            //     }
-            // }
+            for ( var i = 0; i < entities.length; i++ ) {
+                if ( entities[i]["type"] == "StockName") {
+                    StockName = entities[i]["entity"];
+                }
+                if ( entities[i]["type"] == "builtin.number") {
+                    ShareQuantity = entities[i]["entity"];
+                }
+            }
 
-            // if ( moveDirection != "" ) {
-            //     console.log('before moveLastInDirection' + moveDirection);
-            //     moveLastInDirection(moveDirection);
-            // }
-            // if ( movePos != "" ) {
-            //     moveLastToCell(movePos);
-            // }
-            document.getElementById("botWindow").src="../images/show001.png";
-
-            var audio = new Audio('../audios/sampleCanto_Male2.wav');
-            audio.play();       
+            if (StockName == ""){
+                // CONFIGURE THE TEXT REPLY FROM BOT
+                buildString += "Which stocks would you like to purchase?";
+            
+                // IMAGE TO BE SHOWN FOR THIS REPLY
+                document.getElementById("botWindow").src="../images/restaurant001.png";
+            
+                // PLAY DEFAULT AUDIO BY THE BOT
+                var audio = new Audio('../audios/female_eng_WhichStock.mp3');
+                audio.play();
+            }
+            else if (ShareQuantity ==""){
+                if(StockName == ""){
+                    // CONFIGURE THE TEXT REPLY FROM BOT
+                    buildString += "Which stocks would you like to purchase?";
+            
+                    // IMAGE TO BE SHOWN FOR THIS REPLY
+                    document.getElementById("botWindow").src="../images/restaurant001.png";
+            
+                    // PLAY DEFAULT AUDIO BY THE BOT
+                    var audio = new Audio('../audios/female_eng_WhichStock.mp3');
+                    audio.play();
+                }
+                else{
+                    // CONFIGURE THE TEXT REPLY FROM BOT
+                    buildString += "How many shares would you like to purchase?";
+            
+                    // IMAGE TO BE SHOWN FOR THIS REPLY
+                    document.getElementById("botWindow").src="../images/restaurant001.png";
+            
+                    // PLAY DEFAULT AUDIO BY THE BOT
+                    var audio = new Audio('../audios/female_eng_HowManyShares.mp3');
+                    audio.play();
+                }
+            }
+            else{
+                if (StockName == "microsoft"){
+                    // CONFIGURE THE TEXT REPLY FROM BOT
+                    buildString += ShareQuantity + " shares of Microsoft's stocks have been purchased. It is my pleasure to serve you here. Anything else I can help?";
+            
+                    // IMAGE TO BE SHOWN FOR THIS REPLY
+                    document.getElementById("botWindow").src="../images/restaurant001.png";
+            
+                    // PLAY DEFAULT AUDIO BY THE BOT
+                    var audio = new Audio('../audios/female_eng_TranSucceed.mp3');
+                    audio.play();   
+                }
+                else{
+                    // CONFIGURE THE TEXT REPLY FROM BOT
+                    buildString += "We don't have such stock at our database at the moment. Please try again later.";
+            
+                    // IMAGE TO BE SHOWN FOR THIS REPLY
+                    document.getElementById("botWindow").src="../images/robotSorry.png";
+            
+                    // PLAY DEFAULT AUDIO BY THE BOT
+                    var audio = new Audio('../audios/female_eng_NoStock.mp3');
+                    audio.play();   
+                }
+            }
         }
 
-        if (resp["intents"][0]["intent"] == "findCinema" )
-        {
-            buildString += "話你聽呢度有咩好玩! 呢度雖然冇戲院，但係我哋今日黃昏時間有live band show!";
-            // var deletePosition = "";
-
-            // for ( var i = 0; i < entities.length; i++ ) {
-            //     if ( entities[i]["type"] == "builtin.number") {
-            //         deletePosition = entities[i]["entity"];
-            //         buildString += " [ Position: " + entities[i]["entity"] + "] ";
-            //     }
-            // }
-
-            // if ( deletePosition != "") {
-            //     delCell(deletePosition);
-            // }
-            document.getElementById("botWindow").src="../images/show001.png";
-
-            var audio = new Audio('../audios/sampleCanto_Male3.wav');
-            audio.play(); 
-        }
-
-        if (resp["intents"][0]["intent"] == "findShop" )
-        {
-            buildString += "幫你搜羅最啱你買嘢嘅店鋪!";
-            document.getElementById("botWindow").src="../images/shop001.png";
-
-            var audio = new Audio('../audios/sampleCanto_Male4.wav');
-            audio.play(); 
-        }
-
+        // ACTIONS SET FOR COMMANDS THAT CANNOT BE RECOGNIZED
         if (resp["intents"][0]["intent"] == "None" )
         {
-            buildString += "唔好意思，我暫時未諗到可以點幫你 :(";
+            buildString += "I'm sorry. I cannot understand your command at this moment. Please try again :(";
             document.getElementById("botWindow").src="../images/robotSorry.png";
 
-            var audio = new Audio('../audios/sampleCanto_Male5.wav');
+            var audio = new Audio('../audios/female_eng_Sorry.mp3');
             audio.play(); 
         }
 
