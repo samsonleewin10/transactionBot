@@ -2,8 +2,6 @@
 
 _An application that updates its own user interface based on user's voice commands using speech recognition and machine learning_.
 
-![STT Demo](demo.gif)
-
 Ever wonder what it's like to have Jarvis from Iron Man? Well now with the advances in machine learning and speech recognition, what if we build web applications with something like Jarvis? This is a simple proof of concept that demonstrates how users can now build web UIs with simple voice commands.
 
 This application is built using RecorderJS to record audio, [Bing Speech API](https://www.microsoft.com/cognitive-services/en-us/speech-api/documentation/overview) to recognize user's voice commands while it also uses [LUIS](https://www.microsoft.com/cognitive-services/en-us/luis-api/documentation/home) (Language Understanding Intelligent Services) to understand the user's intentions, which are interpreted and used for updating cells in a web user interface. 
@@ -13,7 +11,7 @@ This application is built using RecorderJS to record audio, [Bing Speech API](ht
 Clone this repo and then install dependencies:
 
     git clone https://github.com/samsonleewin10/transactionBot.git
-    cd sttdemo
+    cd transactionBot
     npm i
 
 
