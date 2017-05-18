@@ -12,7 +12,7 @@ This application is built using RecorderJS to record audio, [Bing Speech API](ht
 
 Clone this repo and then install dependencies:
 
-    git clone https://github.com/ritazh/sttdemo.git
+    git clone https://github.com/samsonleewin10/transactionBot.git
     cd sttdemo
     npm i
 
