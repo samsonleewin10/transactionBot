@@ -95,7 +95,7 @@
                     buildString += "How many shares would you like to purchase?";
                     
                     if( StockName == "microsoft"){
-                        document.getElementById("botWindow").src="../images/.msStock.png";
+                        document.getElementById("botWindow").src="../images/msStock.png";
                     }else{
                         // IMAGE TO BE SHOWN FOR THIS REPLY
                         document.getElementById("botWindow").src="../images/botAsk.png";
